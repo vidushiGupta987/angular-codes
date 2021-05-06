@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Structure</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="style.css">
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<script src="angular.min.js"></script>
+</head>
+<body ng-app='angularTable'>
+
+<nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar" style="background-color:#3b2a55;">
+   <div class="container-fluid">
+    <i class='fas fa-user-tag' style='font-size:25px;color:white'></i>
+    <span class="mx-auto"><h1 style="color:white;">User Management System</h1></span>
+   </div>
+  </nav>
+  
+  
+  
+  <nav class="navbar navbar-dark mt-5 mx-auto" style="background-color: #3b2a55; width: 60%;">
+  
+    <i class='fa fa-users ml-3' style='font-size:25px; color:white'></i>
+<span class="mx-auto " style="color: white;"><h2>User Data List</h2></span>
+</nav>
+  
+  <div class="container" ng-controller="tableCtrl">
+  <input  ng-model="query[queryBy]" type="search" id="search-box" class="form-control rounded my-3 py-3" placeholder="Search" aria-label="Search"
+  aria-describedby="search-addon" />
+  <table class="table table-bordered">
+    <thead>
+      <tr mg-model="queryBy">
+        <th scope="col" value="$">Name</th>
+        <th scope="col" value="$">Email</th>
+        <th scope="col" value="$">Phone</th>
+        <th scope="col" value="$">Gender</th>
+        <th scope="col" value="$">Age</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="employee in employees | filter : query">
+            <td> {{   employee.name    }} </td>
+            <td> {{   employee.email   }} </td>
+            <td> {{   employee.phone   }} </td>
+            <td> {{   employee.gender  }} </td>
+            <td > {{   employee.age     }} </td>
+        </tr>
+    </tbody>
+  </table>
+  </div>
+  <footer class="fixed-bottom">
+<div class="footer-copyright text-left mt-3 ml-4 py-3">© Patientbond 2019</div>
+
+    </footer>
+  
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="app.js"></script>
+</body>
+</html>

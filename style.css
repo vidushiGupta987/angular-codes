@@ -1,0 +1,21 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.table th{
+    text-align: center;
+}
+.table  td{
+    text-align: center;
+}
+footer{
+    background-color: rgb(248, 248, 248);
+    border: 1px solid black;
+    
+        position: fixed;
+        height: 90px;
+        bottom: 0;
+        width: 100%;
+    
+}
