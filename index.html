@@ -1,37 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootstrap Structure</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="stylesheet" href="style.css">
-<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-<script src="angular.min.js"></script>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bootstrap Structure</title>
+  <!-- CDN -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <link rel="stylesheet" href="style.css">
+   <script src="angular.min.js"></script>
+   <link rel="stylesheet" href="./font-awesome/css/all.css">
+
 </head>
 <body ng-app='angularTable'>
-
+  <!--first navbar -->
 <nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar" style="background-color:#3b2a55;">
-   <div class="container-fluid">
-    <i class='fas fa-user-tag' style='font-size:25px;color:white'></i>
-    <span class="mx-auto"><h1 style="color:white;">User Management System</h1></span>
-   </div>
-  </nav>
-  
-  
-  
-  <nav class="navbar navbar-dark mt-5 mx-auto" style="background-color: #3b2a55; width: 60%;">
-  
-    <i class='fa fa-users ml-3' style='font-size:25px; color:white'></i>
-<span class="mx-auto " style="color: white;"><h2>User Data List</h2></span>
+  <div class="container-fluid">
+     <span> <i class="fas fa-user-tag ml-3" style=" font-size:25px; color: white;"></i></span> 
+     <span class="mx-auto"><h1 style="color:white;">User Management System</h1></span>
+  </div>
 </nav>
+  <!-- end of first navbar-->
+
+  <!--second navbar-->
+<nav class="navbar navbar-dark mt-5 mx-auto" style="background-color: #3b2a55; width:60%">
   
-  <div class="container" ng-controller="tableCtrl">
-  <input  ng-model="query[queryBy]" type="search" id="search-box" class="form-control rounded my-3 py-3" placeholder="Search" aria-label="Search"
-  aria-describedby="search-addon" />
-  <table class="table table-bordered">
+    <i class="fas fa-users ml-3" style='font-size:25px; color:white'></i>
+    <span class="mx-auto " style="color: white;"><h2>User Data List</h2></span>
+</nav>
+  <!--end of second navbar-->
+  
+ <!--ng controller directive-->
+  <!-- controller added to the div which will control the data which gets passed to the view-->
+    <div class="container" style="width: 58%;" ng-controller="tableCtrl">
+    
+      <!-- searchbox -->
+      <!-- query[queryBy]  the value written in the input and populate it in the form of table -->
+    
+    <input  ng-model="query[queryBy]" type="search" id="search-box" class="form-control rounded my-3 py-3" placeholder="Search" aria-label="Search"
+    aria-describedby="search-addon" />
+  <!--table-->
+<table class="table table-bordered">
     <thead>
+      <!--queryBy has the value ="$" as defined at .controller in app.js-->
+      <!--queryBy is used to search from all columns -->
       <tr mg-model="queryBy">
         <th scope="col" value="$">Name</th>
         <th scope="col" value="$">Email</th>
@@ -41,27 +53,31 @@
       </tr>
     </thead>
     <tbody>
+      <!--ng-repeat directive repeats td element for each item in a table-->
         <tr ng-repeat="employee in employees | filter : query">
+         <!--expressions used to bind data to the HTML -->
             <td> {{   employee.name    }} </td>
             <td> {{   employee.email   }} </td>
             <td> {{   employee.phone   }} </td>
-            <td> {{   employee.gender  }} </td>
+            <td><i class=" {{   employee.image  }} "></i></td>
             <td > {{   employee.age     }} </td>
         </tr>
     </tbody>
   </table>
+   
   </div>
-  <footer class="fixed-bottom">
-<div class="footer-copyright text-left mt-3 ml-4 py-3">© Patientbond 2019</div>
+  <!-- footer -->
+  <footer class="fixed-bottom" >
+    <img class="push"src="./img/pbLogo.jpg">
+    <div class="footer-copyright text-left mt-3 ml-4 py-3">© Patientbond 2019
+    </div>
 
-    </footer>
+  </footer>
   
-
-
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="./font-awesome/js/all.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
